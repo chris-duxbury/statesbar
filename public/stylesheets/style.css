@@ -1,8 +1,34 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.typeahead {
+  position: relative;
 }
 
-a {
-  color: #00B7FF;
+#matches {
+  list-style: none;
+  position: absolute;
+  top: 4.5em;
+  left: 0;
+  background-color: gainsboro;
+  width: 250px;
+  margin: 0 0.5em;
+  padding: 0;
+}
+
+#matches:empty {
+  display: none;
+}
+
+#matches li {
+  border-bottom: brown;
+  cursor: pointer;
+  padding: 1em;
+}
+
+#matches li.selected {
+  background-color: red;
+  color: gainsboro;
+}
+
+#matches li:hover {
+  background-color: red;
+  color: gainsboro;
 }
