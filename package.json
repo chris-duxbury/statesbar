@@ -1,0 +1,15 @@
+{
+  "name": "statesbar",
+  "version": "1.0.0",
+  "description": "An application for a states typeahead",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "states",
+    "typeahead"
+  ],
+  "author": "Chris Duxbury",
+  "license": "ISC"
+}
