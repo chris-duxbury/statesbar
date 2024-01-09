@@ -10,15 +10,6 @@ const typeahead = {
             .then(response => response.json())
             .then(data => {
                 this.states = data.states;
-                for (const state of this.states) {
-                    const item = document.createElement("li");
-                    item.innerHTML = state;
-                    this.matches.appendChild(item);
-                    item.addEventListener("click", () => {
-                        this.input.value = state;
-                        this.handleInput();
-                    });
-                }
             });
     },
     handleInput: function() {
