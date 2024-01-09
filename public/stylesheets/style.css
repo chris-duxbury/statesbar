@@ -1,16 +1,16 @@
-.typeahead {
-  position: relative;
+#statesbar {
+  width: 250px;
+  margin: 0;
+  padding: 0.5em;
 }
 
 #matches {
+  display: none;
   list-style: none;
-  position: absolute;
-  top: 4.5em;
-  left: 0;
   background-color: gainsboro;
   width: 250px;
-  margin: 0 0.5em;
-  padding: 0;
+  margin: 0;
+  padding: 0.5em;
 }
 
 #matches:empty {
@@ -20,7 +20,7 @@
 #matches li {
   border-bottom: brown;
   cursor: pointer;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 #matches li.selected {

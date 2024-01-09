@@ -24,7 +24,12 @@ const typeahead = {
     handleInput: function() {
         this.clearResults();
         let { value } = this.input;
-        if (value.length < 1) value = ".*";
+        if (value.length < 1 || this.states.includes(value)) {
+            value = ".*";
+            this.matches.style.display = "none";
+        } else {
+            this.matches.style.display = "block";
+        };
         const starts = new RegExp("^" + value, "i");
         const match = new RegExp(value, "i");
         const results = this.states
@@ -34,6 +39,9 @@ const typeahead = {
                 if (!starts.test(a.name) && starts.test(b.name)) return 1;
                 return a.name < b.name ? -1 : 1;
             });
+        if (results.length === 0) {
+            this.matches.style.display = "none";
+        }
         for (const state of results) {
             const item = document.createElement("li");
             const matchedText = match.exec(state)[0];
