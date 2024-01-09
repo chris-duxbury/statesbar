@@ -16,9 +16,35 @@ const typeahead = {
             });
     },
     handleInput: function() {
-
-        return;
-    }
+        this.clearResults();
+        let { value } = this.input;
+        if (value.length < 1) value = ".*";
+        const starts = new RegExp("^" + value, "i");
+        const match = new RegExp(value, "i");
+        const results = this.states
+            .filter(state => match.test(state))
+            .sort((a, b) => {
+                if (starts.test(a.name) && !starts.test(b.name)) return -1;
+                if (!starts.test(a.name) && starts.test(b.name)) return 1;
+                return a.name < b.name ? -1 : 1;
+            });
+        console.log(results);
+        for (const state of results) {
+            const item = document.createElement("li");
+            const matchedText = match.exec(state)[0];
+            item.innerHTML = value == ".*" ? state :
+                state.replace(
+                    matchedText,
+                    "<strong>" + matchedText + "</strong>"
+                );
+            this.matches.appendChild(item);
+        }
+    },
+    clearResults: function() {
+        while (this.matches.firstChild) {
+            this.matches.removeChild(this.matches.firstChild);
+        }
+    },
 };
 
 typeahead.init();
